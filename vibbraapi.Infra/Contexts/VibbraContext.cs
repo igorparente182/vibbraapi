@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using vibbraapi.Domain.Entities;
+using vibbraapi.Infra.Mappings;
 
 namespace vibbraapi.Infra.Contexts
 {
@@ -14,15 +15,16 @@ namespace vibbraapi.Infra.Contexts
 
         public DbSet<User> Users { get; set; }
 
+        public DbSet<Project> Projects { get; set; }
+
+        public DbSet<Time> Times { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.ApplyConfiguration(new UserMap());
+            modelBuilder.ApplyConfiguration(new ProjectMap());
+            modelBuilder.ApplyConfiguration(new TimeMap());
             base.OnModelCreating(modelBuilder);
-
-            modelBuilder.Entity<User>()
-                .ToTable("TB_USER");
-            modelBuilder.Entity<User>().HasIndex(b => b.Id);
-            modelBuilder.Entity<User>().Property(u => u.Id).HasColumnName("user_id");
-            modelBuilder.Entity<User>().Property(u => u.Password).HasColumnName("senha");
         }
     }
 }

@@ -16,5 +16,9 @@ namespace vibbraapi.Domain.Entities
 
         public DateTime Ended_at { get; set; }
 
+        public User user { get; set; }
+
+        public Project project { get; set; }
+
     }
 }

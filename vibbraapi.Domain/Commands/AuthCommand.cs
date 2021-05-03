@@ -28,8 +28,8 @@ namespace vibbraapi.Domain.Commands
             AddNotifications(
                 new Contract<User>()
                 .Requires()
-                .IsEmpty(Login, "Login", "Login is required")
-                .IsEmpty(Password, "Password", "Password is required"));
+                .IsNotNullOrWhiteSpace(Login, "Login", "Login is required")
+                .IsNotNullOrWhiteSpace(Password, "Password", "Password is required"));
         }
     }
 }

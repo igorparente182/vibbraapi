@@ -51,7 +51,8 @@ namespace vibbraapi.Controllers
                 }
                 else
                 {
-                    return Json(new GenericCommandResult(true, auth.Message, new { }));
+                    var user = (User)auth.Data;
+                    return Json( new { token = JWTToken(user.Name,signingConfigurations,tokenConfigurations), user=user });
                 }
 
 
@@ -67,6 +68,7 @@ namespace vibbraapi.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         public JsonResult GetById(long id)
         {
             if (id==0) return new JsonResult(NotFound()) { StatusCode = 404 };
@@ -83,6 +85,7 @@ namespace vibbraapi.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public JsonResult Create([FromBody] CreateUserCommand command,
             [FromServices] UserHandle handle
             )
@@ -99,6 +102,7 @@ namespace vibbraapi.Controllers
         }
 
         [HttpPut]
+        [Authorize]
         public JsonResult Update([FromBody] UpdateUserCommand command,
            [FromServices] UserHandle handle
            )
@@ -128,26 +132,10 @@ namespace vibbraapi.Controllers
             };
 
             ClaimsIdentity claimsIdentity = new ClaimsIdentity(claims, "Bearer");
-            //if (userDTO.SistemaAbrev == Domain.Enums.SistemasAbrev.SISAVP)
-            //    foreach (var perm in userDTO.Permissoes)
-            //    {
-            //        claimsIdentity.AddClaim(new Claim(ClaimTypes.Role, perm.Serv));
-            //    }
-            //if (userDTO.SistemaAbrev == Domain.Enums.SistemasAbrev.SISGU)
-            //    foreach (var perm in userDTO.Permissoes)
-            //    {
-            //        claimsIdentity.AddClaim(new Claim(ClaimTypes.Role, perm.Serv ));
-            //    }
-
-
-
-
-
+          
             DateTime createDate = DateTime.Now;
-            //DateTime endDate = createDate +
-            //                         TimeSpan.FromSeconds(tokenConfigurations.Seconds);
-            DateTime endDate = createDate +
-                                    TimeSpan.FromHours(2);
+           
+            DateTime endDate = createDate + TimeSpan.FromHours(2);
 
             var handler = new JwtSecurityTokenHandler();
             var securityToken = handler.CreateToken(new SecurityTokenDescriptor
@@ -163,7 +151,6 @@ namespace vibbraapi.Controllers
             return handler.WriteToken(securityToken);
 
         }
-
 
     }
 
