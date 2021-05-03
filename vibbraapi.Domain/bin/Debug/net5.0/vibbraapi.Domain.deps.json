@@ -1,0 +1,41 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v5.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v5.0": {
+      "vibbraapi.Domain/1.0.0": {
+        "dependencies": {
+          "Flunt": "2.0.3"
+        },
+        "runtime": {
+          "vibbraapi.Domain.dll": {}
+        }
+      },
+      "Flunt/2.0.3": {
+        "runtime": {
+          "lib/netstandard2.0/Flunt.dll": {
+            "assemblyVersion": "2.0.3.0",
+            "fileVersion": "2.0.3.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "vibbraapi.Domain/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Flunt/2.0.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-0AEzlD5GM7b9aNn+CjSU9T9dney9ZqIlmvBa5pmLjx5sxVH4MEv2f7yKNVLmpQ6mGgTl3vQHDwqWZEL0+sRb1A==",
+      "path": "flunt/2.0.3",
+      "hashPath": "flunt.2.0.3.nupkg.sha512"
+    }
+  }
+}

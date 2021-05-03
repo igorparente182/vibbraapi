@@ -1,0 +1,99 @@
+{
+  "version": 3,
+  "targets": {
+    "net5.0": {
+      "Flunt/2.0.3": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/Flunt.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Flunt.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Flunt/2.0.3": {
+      "sha512": "0AEzlD5GM7b9aNn+CjSU9T9dney9ZqIlmvBa5pmLjx5sxVH4MEv2f7yKNVLmpQ6mGgTl3vQHDwqWZEL0+sRb1A==",
+      "type": "package",
+      "path": "flunt/2.0.3",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "flunt.2.0.3.nupkg.sha512",
+        "flunt.nuspec",
+        "icon.png",
+        "lib/netstandard2.0/Flunt.dll"
+      ]
+    }
+  },
+  "projectFileDependencyGroups": {
+    "net5.0": [
+      "Flunt >= 2.0.3"
+    ]
+  },
+  "packageFolders": {
+    "C:\\Users\\igorp\\.nuget\\packages\\": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "D:\\ProjetosFreelancer\\vibbraapi\\vibbraapi\\vibbraapi.Domain\\vibbraapi.Domain.csproj",
+      "projectName": "vibbraapi.Domain",
+      "projectPath": "D:\\ProjetosFreelancer\\vibbraapi\\vibbraapi\\vibbraapi.Domain\\vibbraapi.Domain.csproj",
+      "packagesPath": "C:\\Users\\igorp\\.nuget\\packages\\",
+      "outputPath": "D:\\ProjetosFreelancer\\vibbraapi\\vibbraapi\\vibbraapi.Domain\\obj\\",
+      "projectStyle": "PackageReference",
+      "configFilePaths": [
+        "C:\\Users\\igorp\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+      ],
+      "originalTargetFrameworks": [
+        "net5.0"
+      ],
+      "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "projectReferences": {}
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      }
+    },
+    "frameworks": {
+      "net5.0": {
+        "targetAlias": "net5.0",
+        "dependencies": {
+          "Flunt": {
+            "target": "Package",
+            "version": "[2.0.3, )"
+          }
+        },
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "frameworkReferences": {
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          }
+        },
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
+      }
+    }
+  }
+}

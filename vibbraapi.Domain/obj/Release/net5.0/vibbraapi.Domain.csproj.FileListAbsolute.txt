@@ -1,0 +1,12 @@
+D:\ProjetosFreelancer\vibbraapi\vibbraapi\vibbraapi.Domain\bin\Release\net5.0\vibbraapi.Domain.deps.json
+D:\ProjetosFreelancer\vibbraapi\vibbraapi\vibbraapi.Domain\bin\Release\net5.0\vibbraapi.Domain.dll
+D:\ProjetosFreelancer\vibbraapi\vibbraapi\vibbraapi.Domain\bin\Release\net5.0\ref\vibbraapi.Domain.dll
+D:\ProjetosFreelancer\vibbraapi\vibbraapi\vibbraapi.Domain\bin\Release\net5.0\vibbraapi.Domain.pdb
+D:\ProjetosFreelancer\vibbraapi\vibbraapi\vibbraapi.Domain\obj\Release\net5.0\vibbraapi.Domain.csprojAssemblyReference.cache
+D:\ProjetosFreelancer\vibbraapi\vibbraapi\vibbraapi.Domain\obj\Release\net5.0\vibbraapi.Domain.GeneratedMSBuildEditorConfig.editorconfig
+D:\ProjetosFreelancer\vibbraapi\vibbraapi\vibbraapi.Domain\obj\Release\net5.0\vibbraapi.Domain.AssemblyInfoInputs.cache
+D:\ProjetosFreelancer\vibbraapi\vibbraapi\vibbraapi.Domain\obj\Release\net5.0\vibbraapi.Domain.AssemblyInfo.cs
+D:\ProjetosFreelancer\vibbraapi\vibbraapi\vibbraapi.Domain\obj\Release\net5.0\vibbraapi.Domain.csproj.CoreCompileInputs.cache
+D:\ProjetosFreelancer\vibbraapi\vibbraapi\vibbraapi.Domain\obj\Release\net5.0\vibbraapi.Domain.dll
+D:\ProjetosFreelancer\vibbraapi\vibbraapi\vibbraapi.Domain\obj\Release\net5.0\ref\vibbraapi.Domain.dll
+D:\ProjetosFreelancer\vibbraapi\vibbraapi\vibbraapi.Domain\obj\Release\net5.0\vibbraapi.Domain.pdb
