@@ -8,7 +8,7 @@ namespace vibbraapi.Domain.Entities
 {
     public class Time:Entity
     {
-        public long Projct_Id { get; set; }
+        public long Project_Id { get; set; }
 
         public long User_Id { get; set; }
 
