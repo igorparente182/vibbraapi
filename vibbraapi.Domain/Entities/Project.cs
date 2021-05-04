@@ -12,7 +12,7 @@ namespace vibbraapi.Domain.Entities
 
         public string Description { get; set; }
 
-        public virtual ICollection<Time> Times { get; set; }
+        public virtual ICollection<Time> UserTimes { get; set; }
 
         public Project() { }
 

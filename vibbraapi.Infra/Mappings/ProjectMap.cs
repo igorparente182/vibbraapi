@@ -14,7 +14,7 @@ namespace vibbraapi.Infra.Mappings
         public void Configure(EntityTypeBuilder<Project> builder)
         {
             builder.ToTable("TB_PROJECT");
-            builder.Property(P => P.Id).HasColumnName("project_id");
+            builder.Property(P => P.Id).HasColumnName("project_id").ValueGeneratedOnAdd();
         }
     }
 }

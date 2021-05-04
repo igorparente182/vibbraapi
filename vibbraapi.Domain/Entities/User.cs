@@ -16,7 +16,7 @@ namespace vibbraapi.Domain.Entities
 
         public string Password { get; set; }
 
-        public virtual ICollection<Time> Times { get; set; }
+        public virtual ICollection<Time> ProjectTimes { get; set; }
 
       
         public User(string name, string email, string login, string password) 

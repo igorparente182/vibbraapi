@@ -31,11 +31,11 @@ namespace vibbraapi.Infra.Repositories
 
         public Project getById(long project_id)
         {
-            return _context.Projects.AsNoTracking().Include(p=>p.Times).FirstOrDefault(p=>p.Id==project_id);
+            return _context.Projects.AsNoTracking().Include(p=>p.UserTimes).FirstOrDefault(p=>p.Id==project_id);
         }
         IEnumerable<Project> IProjectRepository.GetProjectsUser(User user)
         {
-            return _context.Projects.Where(p => p.Times.Any(u => u.user == user));
+            return _context.Projects.Where(p => p.UserTimes.Any(u => u.User == user));
         }
         public void Update(Project project)
         {

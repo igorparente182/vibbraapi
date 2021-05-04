@@ -25,7 +25,7 @@ namespace vibbraapi.Domain.Handler
             command.Validate();
             if(!command.IsValid) return new GenericCommandResult(false, "Error: ", command.Notifications);
 
-            var time = new Time(command.Project_Id, command.User_Id, command.Started_at, command.Ended_at);
+            var time = new Time(command.Project, command.User, command.Started_at, command.Ended_at);
             _repository.Create(time);
 
             return new GenericCommandResult(true, "Create time with success!", time);

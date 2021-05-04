@@ -20,11 +20,7 @@ namespace vibbraapi.Infra.Repositories
         }
         public void Create(Time time)
         {
-            var project = _context.Projects.AsNoTracking().FirstOrDefault(p => p.Id == time.Project_Id);
-            var user = _context.Users.AsNoTracking().FirstOrDefault(u => u.Id == time.User_Id);
-            time.project = project;
-            time.user = user;
-            _context.Add(time);
+            _context.Times.Add(time);
             _context.SaveChanges();
         }
 

@@ -16,15 +16,15 @@ namespace vibbraapi.Domain.Entities
 
         public DateTime? Ended_at { get; set; }
 
-        public User user { get; set; }
+        public User User { get; set; }
 
-        public Project project { get; set; }
+        public Project Project { get; set; }
 
         public Time() { }
-        public Time(long project_id, long user_id, DateTime? started_at, DateTime? ended_at) 
+        public Time(Project project, User user, DateTime? started_at, DateTime? ended_at) 
         {
-            Project_Id = project_id;
-            User_Id = user_id;
+            Project = project;
+            User = user;
             Started_at = started_at;
             Ended_at = ended_at;
         }

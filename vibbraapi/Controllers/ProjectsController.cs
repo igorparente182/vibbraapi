@@ -15,10 +15,12 @@ namespace vibbraapi.Controllers
     public class ProjectsController : Controller
     {
         private readonly IProjectRepository _repository;
+        private readonly IUserRepository _userRepository;
 
-        public ProjectsController(IProjectRepository repository) 
+        public ProjectsController(IProjectRepository repository,IUserRepository userRepository) 
         {
             _repository = repository;
+            _userRepository = userRepository;
         }
         [HttpGet]
         public JsonResult getAll()
@@ -36,14 +38,15 @@ namespace vibbraapi.Controllers
 
             try
             {
-               
+                
                 var resultProject = (GenericCommandResult)handler.Handle(command);
                
                 if (resultProject.Success)
                 {
                     var project = (Project)resultProject.Data;
                     foreach (var item in command.User_Id) {
-                        var resultTime = timeHandler.Handle(new CreateTimeCommand(project.Id, item, null,null));
+                        var user = _userRepository.GetById(item);
+                        var resultTime = timeHandler.Handle(new CreateTimeCommand(project, user, null,null));
                     }
                     return Json(project);
                    
@@ -52,7 +55,7 @@ namespace vibbraapi.Controllers
             }
             catch (Exception ex) 
             {
-                return new JsonResult(BadRequest()) { StatusCode = 400, Value = new GenericCommandResult(false, "ops! Algo de errado ocorreu, ", ex.Message) };
+                return new JsonResult(BadRequest()) { StatusCode = 400, Value = new GenericCommandResult(false, "ops! Algo de errado ocorreu, ", ex.Message+ex.InnerException) };
             }
             return Json("ok");
         }

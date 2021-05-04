@@ -14,8 +14,7 @@ namespace vibbraapi.Infra.Mappings
         public void Configure(EntityTypeBuilder<User> builder)
         {
             builder.ToTable("TB_USER");
-            builder.HasIndex(b => b.Id);
-            builder.Property(u => u.Id).HasColumnName("user_id");
+            builder.Property(u => u.Id).HasColumnName("user_id").ValueGeneratedOnAdd();
             builder.Property(u => u.Password).HasColumnName("senha");
 
         }
