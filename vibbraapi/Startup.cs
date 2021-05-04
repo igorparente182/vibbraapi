@@ -56,6 +56,7 @@ namespace vibbraapi
             services.AddTransient<ProjectHandler>();
 
             services.AddTransient<ITimeRepository, TimeRepository>();
+            services.AddTransient<TimeHandler>();
 
             services.AddSwaggerGen(c =>
             {

@@ -15,12 +15,16 @@ namespace vibbraapi.Domain.Commands
 
         public string Description { get; set; }
 
+        public ICollection<long> User_Id { get; set; }
+
         public CreateProjectCommand() { }
 
-        public CreateProjectCommand(string title, string description) 
+        public CreateProjectCommand(string title, string description,ICollection<long> user_id) 
         {
             Title = title;
             Description = description;
+
+            User_Id = user_id;
         }
 
         public void Validate() 

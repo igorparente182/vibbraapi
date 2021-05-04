@@ -26,27 +26,22 @@ namespace vibbraapi.Infra.Repositories
 
         public IEnumerable<Project> getAll()
         {
-            return (IEnumerable<Project>)_context.Projects.Select(p=> new {p.Id, p.Title,p.Description}).ToList();
+            return _context.Projects;
         }
 
         public Project getById(long project_id)
         {
             return _context.Projects.AsNoTracking().Include(p=>p.Times).FirstOrDefault(p=>p.Id==project_id);
         }
-
-        public IEnumerable<Time> GetProjectsUser(User user)
-        {
-            return _context.Times.AsNoTracking().Include(p => p.project).Where(p=>p.user==user);
-        }
-
-        public void Update(Project project)
-        {
-            throw new NotImplementedException();
-        }
-
         IEnumerable<Project> IProjectRepository.GetProjectsUser(User user)
         {
-            throw new NotImplementedException();
+            return _context.Projects.Where(p => p.Times.Any(u => u.user == user));
         }
+        public void Update(Project project)
+        {
+            _context.Entry(project).State = EntityState.Modified;
+            _context.SaveChanges();
+        }
+
     }
 }
