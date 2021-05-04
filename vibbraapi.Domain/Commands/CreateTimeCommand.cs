@@ -1,12 +1,15 @@
-﻿using System;
+﻿using Flunt.Validations;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using vibbraapi.Domain.Commands.Contracts;
+using vibbraapi.Domain.Entities;
 
-namespace vibbraapi.Domain.Entities
+namespace vibbraapi.Domain.Commands
 {
-    public class Time:Entity
+     public class CreateTimeCommand:Contract<Time>,ICommand
     {
         public long Project_Id { get; set; }
 
@@ -16,12 +19,7 @@ namespace vibbraapi.Domain.Entities
 
         public DateTime? Ended_at { get; set; }
 
-        public User user { get; set; }
-
-        public Project project { get; set; }
-
-        public Time() { }
-        public Time(long project_id, long user_id, DateTime? started_at, DateTime? ended_at) 
+        public CreateTimeCommand(long project_id, long user_id, DateTime? started_at, DateTime? ended_at)
         {
             Project_Id = project_id;
             User_Id = user_id;
@@ -29,5 +27,9 @@ namespace vibbraapi.Domain.Entities
             Ended_at = ended_at;
         }
 
+        public void Validate() 
+        {
+           
+        }
     }
 }

@@ -16,7 +16,15 @@ namespace vibbraapi.Infra.Mappings
             builder.ToTable("TB_TIME");
             builder.Property(t => t.Id).HasColumnName("time_id");
 
-            builder.HasKey(x => new { x.Id, x.Projct_Id, x.User_Id });
+            builder.HasKey(x => new { x.Id, x.Project_Id, x.User_Id });
+
+            builder.HasOne(t => t.project)
+                .WithMany(t => t.Times)
+                .HasForeignKey(t => t.Project_Id);
+
+            builder.HasOne(t => t.user)
+                .WithMany(t => t.Times)
+                .HasForeignKey(t => t.User_Id);
         }
     }
 }

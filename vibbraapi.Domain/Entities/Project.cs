@@ -14,6 +14,12 @@ namespace vibbraapi.Domain.Entities
 
         public virtual ICollection<Time> Times { get; set; }
 
+        public Project() { }
 
+        public Project(string title, string description) 
+        {
+            Title = title;
+            Description = description; 
+        }
     }
 }

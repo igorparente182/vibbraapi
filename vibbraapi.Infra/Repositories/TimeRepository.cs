@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,28 +20,29 @@ namespace vibbraapi.Infra.Repositories
         }
         public void Create(Time time)
         {
-            _context.Add(time);
+            _context.Times.Add(time);
             _context.SaveChanges();
         }
 
         public IEnumerable<Time> getByTime(long time_id)
         {
-            return null;
+            return _context.Times.AsNoTracking().Where(t => t.Id == time_id);
         }
 
         public IEnumerable<Time> getTimeByProject(long project_id)
         {
-            throw new NotImplementedException();
+            return _context.Times.AsNoTracking().Where(t => t.Project_Id == project_id);
         }
 
         public IEnumerable<Time> getTimeByUser(long user_id)
         {
-            throw new NotImplementedException();
+            return _context.Times.AsNoTracking().Where(t => t.User_Id == user_id);
         }
 
         public void Update(Time time)
         {
-            throw new NotImplementedException();
+            _context.Entry(time).State = EntityState.Modified;
+            _context.SaveChanges();
         }
     }
 }
