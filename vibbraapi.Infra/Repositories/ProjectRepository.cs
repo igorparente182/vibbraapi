@@ -24,9 +24,9 @@ namespace vibbraapi.Infra.Repositories
             _context.SaveChanges();
         }
 
-        public IEnumerable<Project> getAll()
+        public IEnumerable<object> getAll()
         {
-            return _context.Projects;
+            return _context.Projects.Select(p=> new { p.Id,p.Title,p.Description});
         }
 
         public Project getById(long project_id)

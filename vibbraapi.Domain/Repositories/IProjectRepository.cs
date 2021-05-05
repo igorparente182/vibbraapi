@@ -15,7 +15,7 @@ namespace vibbraapi.Domain.Repositories
 
         Project getById(long project_id);
 
-        IEnumerable<Project> getAll();
+        IEnumerable<object> getAll();
 
         IEnumerable<Project> GetProjectsUser(User user);
 
