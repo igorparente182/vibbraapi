@@ -57,7 +57,6 @@ namespace vibbraapi.Controllers
             {
                 return new JsonResult(BadRequest()) { StatusCode = 400, Value = new GenericCommandResult(false, "ops! Algo de errado ocorreu, ", ex.Message+ex.InnerException) };
             }
-            return Json("ok");
         }
     }
 }
