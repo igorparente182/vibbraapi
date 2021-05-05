@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using vibbraapi.Domain.Entities;
 
-namespace vibbraapi.Domain.Entities
+namespace vibbraapi.Domain.DTO
 {
-    public class User:Entity
+    public class UserDTO:Entity
     {
         public string Name { get; set; }
 
@@ -16,11 +17,10 @@ namespace vibbraapi.Domain.Entities
 
         public string Password { get; set; }
 
-        public virtual ICollection<Time> ProjectTimes { get; set; }
-
-        public User() { }
-        public User(string name, string email, string login, string password) 
+        public UserDTO() { }
+        public UserDTO(long id,string name, string email, string login, string password)
         {
+            Id = id;
             Name = name;
             Email = email;
             Login = login;

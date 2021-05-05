@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,6 +13,7 @@ namespace vibbraapi.Domain.Entities
 
         public string Description { get; set; }
 
+        [NotMapped]
         public virtual ICollection<Time> UserTimes { get; set; }
 
         public Project() { }

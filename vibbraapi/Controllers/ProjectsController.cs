@@ -48,6 +48,7 @@ namespace vibbraapi.Controllers
                         var user = _userRepository.GetById(item);
                         var resultTime = timeHandler.Handle(new CreateTimeCommand(project, user, null,null));
                     }
+                   
                     return Json(project);
                    
                 }

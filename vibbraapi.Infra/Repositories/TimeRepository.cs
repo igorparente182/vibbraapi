@@ -26,22 +26,23 @@ namespace vibbraapi.Infra.Repositories
 
         public IEnumerable<Time> getByTime(long time_id)
         {
-            return null;
+            return _context.Times.AsNoTracking().Include(p => p.Project).Include(p => p.User).Where(t => t.Id == time_id);
         }
 
         public IEnumerable<Time> getTimeByProject(long project_id)
         {
-            throw new NotImplementedException();
+            return _context.Times.AsNoTracking().Include(p=>p.Project).Include(p=>p.User).Where(t=>t.Project_Id==project_id);
         }
 
         public IEnumerable<Time> getTimeByUser(long user_id)
         {
-            throw new NotImplementedException();
+            return _context.Times.AsNoTracking().Include(p => p.Project).Include(p => p.User).Where(t => t.User_Id == user_id);
         }
 
         public void Update(Time time)
         {
-            throw new NotImplementedException();
+            _context.Entry(time).State = EntityState.Modified;
+            _context.SaveChanges();
         }
     }
 }

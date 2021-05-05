@@ -3,15 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using vibbraapi.Domain.Entities;
 
-namespace vibbraapi.Domain.Entities
+namespace vibbraapi.Domain.DTO
 {
-    public class Time:Entity
+    public class TimeDTO:Entity
     {
-        public long Project_Id { get; private set; }
-
-        public long User_Id { get; private set; }
-
         public DateTime? Started_at { get; private set; }
 
         public DateTime? Ended_at { get; private set; }
@@ -20,15 +17,14 @@ namespace vibbraapi.Domain.Entities
 
         public virtual Project Project { get; private set; }
 
-        public Time() { }
-        public Time(Project project, User user, DateTime? started_at, DateTime? ended_at) 
+        public TimeDTO() { }
+        public TimeDTO(long id, Project project, User user, DateTime? started_at, DateTime? ended_at)
         {
-           
-            Project_Id = project.Id;
-            User_Id = user.Id;
+            Id = id;
+            Project = project;
+            User = user;
             Started_at = started_at;
             Ended_at = ended_at;
         }
-
     }
 }

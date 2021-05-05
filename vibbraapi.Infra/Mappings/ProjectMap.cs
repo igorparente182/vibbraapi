@@ -15,6 +15,8 @@ namespace vibbraapi.Infra.Mappings
         {
             builder.ToTable("TB_PROJECT");
             builder.Property(P => P.Id).HasColumnName("project_id").ValueGeneratedOnAdd();
+
+         
         }
     }
 }

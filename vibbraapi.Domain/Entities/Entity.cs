@@ -10,9 +10,7 @@ namespace vibbraapi.Domain.Entities
 {
     public class Entity : IEquatable<Entity>
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        [Key]
-        public long Id { get; private set; }
+        public long Id { get;  set; }
 
         public Entity() 
         {
@@ -20,7 +18,7 @@ namespace vibbraapi.Domain.Entities
         }
         public bool Equals(Entity other)
         {
-            throw new NotImplementedException();
+            return Id == other.Id;
         }
     }
 }
