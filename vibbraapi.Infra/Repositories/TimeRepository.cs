@@ -24,6 +24,11 @@ namespace vibbraapi.Infra.Repositories
             _context.SaveChanges();
         }
 
+        public Time getById(long time_id)
+        {
+            return _context.Times.AsNoTracking().FirstOrDefault(t => t.Id == time_id);
+        }
+
         public IEnumerable<Time> getByTime(long time_id)
         {
             return _context.Times.AsNoTracking().Include(p => p.Project).Include(p => p.User).Where(t => t.Id == time_id);
@@ -32,6 +37,11 @@ namespace vibbraapi.Infra.Repositories
         public IEnumerable<Time> getTimeByProject(long project_id)
         {
             return _context.Times.AsNoTracking().Include(p=>p.Project).Include(p=>p.User).Where(t=>t.Project_Id==project_id);
+        }
+
+        public Time getTimeByProjectByUser(long project_id, long _user_id)
+        {
+            return _context.Times.AsNoTracking().FirstOrDefault(t => t.Project_Id == project_id && t.User_Id==_user_id);
         }
 
         public IEnumerable<Time> getTimeByUser(long user_id)

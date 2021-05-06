@@ -21,11 +21,11 @@ namespace vibbraapi.Domain.Entities
         public virtual Project Project { get; private set; }
 
         public Time() { }
-        public Time(Project project, User user, DateTime? started_at, DateTime? ended_at) 
+        public Time(long project_id, long user_id, DateTime? started_at, DateTime? ended_at) 
         {
            
-            Project_Id = project.Id;
-            User_Id = user.Id;
+            Project_Id = project_id;
+            User_Id = user_id;
             Started_at = started_at;
             Ended_at = ended_at;
         }

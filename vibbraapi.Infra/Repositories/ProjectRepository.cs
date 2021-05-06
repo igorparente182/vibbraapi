@@ -23,10 +23,10 @@ namespace vibbraapi.Infra.Repositories
             _context.Add(project);
             _context.SaveChanges();
         }
-
-        public IEnumerable<object> getAll()
+      
+        public IEnumerable<Project> getAll()
         {
-            return _context.Projects.Select(p=> new { p.Id,p.Title,p.Description});
+            return _context.Projects;
         }
 
         public Project getById(long project_id)

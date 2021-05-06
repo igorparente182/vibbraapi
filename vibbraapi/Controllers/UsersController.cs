@@ -9,6 +9,7 @@ using System.Security.Claims;
 using System.Security.Cryptography;
 using System.Threading.Tasks;
 using vibbraapi.Domain.Commands;
+using vibbraapi.Domain.DTO;
 using vibbraapi.Domain.Entities;
 using vibbraapi.Domain.Handler;
 using vibbraapi.Domain.Repositories;
@@ -52,6 +53,7 @@ namespace vibbraapi.Controllers
                 else
                 {
                     var user = (User)auth.Data;
+                    var userDTO = new UserDTO(user.Id, user.Name, user.Email, user.Login, "*******");
                     return Json( new { token = JWTToken(user.Name,signingConfigurations,tokenConfigurations), user=user });
                 }
 
@@ -75,8 +77,12 @@ namespace vibbraapi.Controllers
 
             try
             {
-                
-                return Json(_repository.GetById(id));
+                var user = _repository.GetById(id);
+                if (user != null) { 
+                    var userDTO = new UserDTO(user.Id, user.Name, user.Email, user.Login, user.Password);
+                    return Json(user);
+                }
+                return Json("Not Found User");
             }
             catch (Exception ex)
             {
@@ -94,10 +100,16 @@ namespace vibbraapi.Controllers
 
             try 
             {
-                return Json((GenericCommandResult)handle.Handle(command));
+                var resultCommand = (GenericCommandResult)handle.Handle(command);
+                if (resultCommand.Success)
+                {
+                    var user = (User)resultCommand.Data;
+                    var userDTO = new UserDTO(user.Id, user.Name, user.Email, user.Login, user.Password);
+                }
+                return Json(resultCommand.Message);
             }catch(Exception ex)
             {
-                return new JsonResult(BadRequest()) { StatusCode = 400, Value = new GenericCommandResult(false, "ops! Algo de errado ocorreu, ", ex.Message) };
+                return new JsonResult(BadRequest()) { StatusCode = 400, Value = new GenericCommandResult(false, "Error ", ex.Message) };
             }
         }
 
@@ -111,16 +123,17 @@ namespace vibbraapi.Controllers
 
             try
             {
-                var data = (GenericCommandResult)handle.Handle(command);
-                if(data.Success)
-                    return Json(data.Data);
-                if (!data.Success)
-                    return Json(data.Message);
-                return Json("Error ao atualizar");
+                var resultCommand = (GenericCommandResult)handle.Handle(command);
+                if (resultCommand.Success)
+                {
+                    var user = (User)resultCommand.Data;
+                    var userDTO = new UserDTO(user.Id, user.Name, user.Email, user.Login, user.Password);
+                }
+                return Json(resultCommand.Message);
             }
             catch (Exception ex)
             {
-                return new JsonResult(BadRequest()) { StatusCode = 400, Value = new GenericCommandResult(false, "ops! Algo de errado ocorreu, ", ex.Message) };
+                return new JsonResult(BadRequest()) { StatusCode = 400, Value = new GenericCommandResult(false, "Error ", ex.Message) };
             }
         }
         private object JWTToken(string name, SigningConfigurations signingConfigurations, TokenConfigurations tokenConfigurations)

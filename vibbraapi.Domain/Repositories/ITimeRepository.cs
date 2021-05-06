@@ -13,10 +13,15 @@ namespace vibbraapi.Domain.Repositories
 
         void Update(Time time);
 
+        Time getById(long time_id);
+
+        Time getTimeByProjectByUser(long project_id, long _user_id);
+
         IEnumerable<Time> getTimeByUser(long user_id);
 
         IEnumerable<Time> getTimeByProject(long project_id);
 
         IEnumerable<Time> getByTime(long time_id);
+
     }
 }

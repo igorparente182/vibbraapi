@@ -12,7 +12,9 @@ using vibbraapi.Domain.Repositories;
 
 namespace vibbraapi.Domain.Handler
 {
-    public class TimeHandler : Contract<Time>, IHandler<CreateTimeCommand>
+    public class TimeHandler : Contract<Time>, 
+        IHandler<CreateTimeCommand>,
+        IHandler<UpdateTimeCommand>
     {
         private readonly ITimeRepository _repository;
 
@@ -25,8 +27,20 @@ namespace vibbraapi.Domain.Handler
             command.Validate();
             if(!command.IsValid) return new GenericCommandResult(false, "Error: ", command.Notifications);
 
-            var time = new Time(command.Project, command.User, command.Started_at, command.Ended_at);
+            var time = new Time(command.Project_Id, command.User_Id, command.Started_at, command.Ended_at);
             _repository.Create(time);
+
+            return new GenericCommandResult(true, "Create time with success!", time);
+        }
+
+        public ICommandResult Handle(UpdateTimeCommand command)
+        {
+            command.Validate();
+            if (!command.IsValid) return new GenericCommandResult(false, "Error: ", command.Notifications);
+
+            var time = new Time(command.Project_Id, command.User_Id, command.Started_at, command.Ended_at);
+            time.Id = command.Time_Id;
+            _repository.Update(time);
 
             return new GenericCommandResult(true, "Create time with success!", time);
         }

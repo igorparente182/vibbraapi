@@ -50,13 +50,13 @@ namespace vibbraapi
             }));
 
             services.AddTransient<IUserRepository, UserRepository>();
-            services.AddTransient<UserHandle>();
+            services.AddTransient<UserHandle,UserHandle>();
 
             services.AddTransient<IProjectRepository, ProjectRepository>();
-            services.AddTransient<ProjectHandler>();
+            services.AddTransient<ProjectHandler,ProjectHandler>();
 
             services.AddTransient<ITimeRepository, TimeRepository>();
-            services.AddTransient<TimeHandler>();
+            services.AddTransient<TimeHandler,TimeHandler>();
 
             services.AddSwaggerGen(c =>
             {
@@ -158,7 +158,7 @@ namespace vibbraapi
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("v1/swagger.json", "vibbraapi v1"));
             }
 
-            app.UseHttpsRedirection();
+           // app.UseHttpsRedirection();
 
             app.UseRouting();
 

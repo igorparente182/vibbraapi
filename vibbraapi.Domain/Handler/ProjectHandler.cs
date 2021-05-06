@@ -55,7 +55,7 @@ namespace vibbraapi.Domain.Handler
 
             _repository.Update(project);
 
-            return new GenericCommandResult(true, "Sucess", command.Notifications);
+            return new GenericCommandResult(true, "Sucess", project);
         }
     }
 }
